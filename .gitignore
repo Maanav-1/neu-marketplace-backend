@@ -1,0 +1,61 @@
+# Build and Binary Files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Log Files
+*.log
+
+# Database Files (H2 Local Development)
+*.mv.db
+*.trace.db
+
+# Sensitive and Local Configuration
+.env
+.env.local
+**/src/main/resources/application-local.yml
+**/src/main/resources/application-local.properties
+
+# STS 
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA 
+.idea
+*.iws
+*.iml
+*.ipr
+cmake-build-*/
+
+# NetBeans 
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code 
+.vscode/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+application-*.yml
+.github/
