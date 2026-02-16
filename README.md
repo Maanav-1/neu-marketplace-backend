@@ -1,82 +1,71 @@
-# NEU Marketplace
+# NEU Marketplace - Backend
 
-A minimalist, community-driven marketplace built for Northeastern University students to buy and sell items. This is an independent student project and is not affiliated with the university.
+The core API for NEU Marketplace, providing a secure and scalable backend for the student community platform. Built with a focus on modularity, security, and efficient media handling.
+
+## Core Features
+
+### Authentication & Security
+
+* **JWT-Based Auth**: Secure stateless authentication using JSON Web Tokens.
+* **OAuth2 Integration**: Support for Google Sign-In alongside traditional email/password accounts.
+* **Email Verification**: Automated 6-digit verification codes for account security and password resets.
+* **Role-Based Access**: Granular control for standard users and administrators.
+
+### Marketplace & Media
+
+* **Listing Management**: Complete CRUD operations for item listings, including categories, conditions, and pricing.
+* **Image Processing**: Integration with **Azure Blob Storage** for high-availability image hosting and management.
+* **Search & Filters**: Backend support for complex querying based on category, price range, and item status.
+
+### Communication & Interactions
+
+* **Messaging System**: Manages real-time conversations and message history between buyers and sellers.
+* **Saved Items**: Logic for user interest tracking and "hearting" listings.
+* **Reporting System**: Infrastructure for users to flag content, which is then queued for admin review.
+
+### Administrative Tools
+
+* **Statistics Engine**: Aggregates data for user growth, listing trends, and category performance.
+* **Moderation API**: Endpoints for blocking/unblocking users and resolving content reports.
+* **Cleanup Service**: Automated tasks for managing expired listings and temporary data.
 
 ## Tech Stack
 
-### Frontend
+* **Language**: Java 17
+* **Framework**: Spring Boot 3
+* **Security**: Spring Security + JWT + OAuth2
+* **Persistence**: Spring Data JPA (Hibernate)
+* **Storage**: Azure Blob Storage
+* **Build Tool**: Maven
+* **Database**: MySQL/PostgreSQL compatible
 
-* **Framework**: React 18 with Vite
-* **Language**: TypeScript
-* **Styling**: Tailwind CSS & Shadcn/UI
-* **State Management**: Zustand (Authentication)
-* **Icons & Animation**: Lucide React & Framer Motion
+## Project Structure
 
-### Backend
-
-* **Framework**: Spring Boot (Java)
-* **Security**: Spring Security with JWT and Google OAuth2
-* **Storage**: Azure Blob Storage (for listing images)
-* **Database**: Spring Data JPA
-
-## Key Features
-
-### Users & Authentication
-
-* **Secure Auth**: Traditional email/password signup with 6-digit verification codes.
-* **Social Login**: Google OAuth integration for quick access.
-* **Profile Management**: Update personal details, change passwords, and track user statistics.
-
-### Marketplace Listings
-
-* **Discovery**: Search functionality and filters for category, price range, and item condition.
-* **Create/Edit**: Support for up to 5 images per listing with markdown descriptions.
-* **Lifecycle**: Renew listings ("Bump") to move them to the top of the feed or mark them as "Sold".
-* **Saved Items**: Users can heart listings to view them later in their personal library.
-
-### Communication
-
-* **Messaging**: A dedicated inbox for buyers and sellers to coordinate.
-* **Real-time Chat**: Polling-based chat interface with unread message indicators.
-
-### Admin & Moderation
-
-* **Dashboard**: Comprehensive overview of user growth, listing statistics, and active reports.
-* **User Management**: Admin controls to block users or promote others to admin roles.
-* **Content Moderation**: User-driven reporting system for prohibited or fraudulent items.
+* `controller/`: REST API endpoints and request mapping.
+* `service/`: Core business logic and external integrations (Email, Azure, etc).
+* `model/`: JPA entities and database schema definitions.
+* `repository/`: Data access layer.
+* `security/`: JWT filters, OAuth2 handlers, and security configuration.
+* `dto/`: Request and response objects for data transfer.
 
 ## Setup
 
-### Prerequisites
-
-* Node.js (v18+)
-* Java 17+
-* Azure Storage Account (or local emulator)
-
-### Environment Configuration
-
-**Frontend (.env):**
-
-```env
-VITE_API_BASE_URL=http://localhost:8080/api
-VITE_AUTH_URL=http://localhost:8080
-
-```
-
-**Backend (application.yml):**
-Configure your database credentials, JWT secret, and Azure connection string in `src/main/resources/application.yml`.
-
-### Installation
-
-1. **Frontend**:
-```bash
-npm install
-npm run dev
-
-```
+1. **Prerequisites**:
+* JDK 17
+* Maven
+* A relational database (MySQL/PostgreSQL)
+* Azure Storage account (for image features)
 
 
-2. **Backend**:
+2. **Configuration**:
+Update `src/main/resources/application.yml` with your credentials:
+* Database URL/Username/Password
+* JWT Secret
+* OAuth2 Client IDs
+* Azure Connection String
+
+
+3. **Run**:
 ```bash
 ./mvnw spring-boot:run
 
@@ -86,4 +75,4 @@ npm run dev
 
 ## Disclaimer
 
-This project is an independent student initiative. It is not affiliated with, endorsed by, or connected to Northeastern University.
+This is an independent student project developed at Northeastern University and is not officially affiliated with the institution.
